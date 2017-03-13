@@ -20,11 +20,17 @@ namespace HotelOpgave
                 {
                     Console.WriteLine(item.ToString());
                 }
+
+                var gæstliste = from g in db.Guest
+                                select g;
+
+                foreach (var item in gæstliste)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+                  
+                Console.ReadLine();
             }
-
-          
-
-           
 
         }
     }
