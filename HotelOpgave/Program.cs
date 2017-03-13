@@ -80,6 +80,37 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
+                Console.WriteLine("Opgave 4.1, Indsæt gæster i databasen:");
+
+
+                //// Indsætter gæst uden gæstenummer indskrevet og det bliver 0! Kan kun ske 1 gang da nul var ledigt så hust Gæstenummer.
+                //var gæst = new Guest() { Name = "Anne Sofie", Address = "HejsaVej 25, 2100 kbh ø" };
+                //db.Guest.Add(gæst);
+
+                ////Indsætter gæst med gæstenummer indskrevet.
+                //var gæst2 = new Guest() { Name = "Emil", Address = "HejsaVej 25, 2100 kbh ø", Guest_No = 31 };
+
+               // db.Guest.Add(gæst2);
+
+                ////Test af Gæstenummer eller ej, det skulle da gæsteklassen ikke autogenerere et nummer system for gæsterne:). 
+                //var gæst3 = new Guest() { Name = "Dagbjørt", Address = "HejsaVej 25, 2100 kbh ø", Guest_No = 32};
+
+                //db.Guest.Add(gæst3);
+
+                //db.SaveChanges();
+
+                var gæsteliste2 =
+                    from g in db.Guest
+                    select g;
+
+                foreach (var item in gæsteliste2)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+
+
+
                 Console.ReadLine();
             }
 
