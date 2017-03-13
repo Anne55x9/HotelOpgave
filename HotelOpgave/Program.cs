@@ -59,10 +59,26 @@ namespace HotelOpgave
                 Console.WriteLine("Opgave 3.2, List alle reservationer hvert enkelt væresle har.");
 
 
-                var værelsesbookinger = 
+                var værelsesbookinger =
                     from r in db.Room
                     join b in db.Booking
-                    on 
+                    on r.Room_No equals b.Room.Room_No
+                    orderby r.Room_No, b.Booking_id
+                    select new
+                    {
+                        r.Hotel.Name,
+                        r.Room_No,
+                        r.Types,
+                        r.Price,
+                        b.Booking_id,
+                        b.Date_From,
+                        b.Date_To
+                    };
+
+                foreach (var item in værelsesbookinger)
+                {
+                    Console.WriteLine(item.ToString());
+                }
 
                 Console.ReadLine();
             }
