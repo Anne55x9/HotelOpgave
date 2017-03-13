@@ -10,6 +10,22 @@ namespace HotelOpgave
     {
         static void Main(string[] args)
         {
+
+            using (var db = new HotelContext())
+            {
+                var hotelList = from h in db.Hotel
+                                select h;
+
+                foreach (var item in hotelList)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+            }
+
+          
+
+           
+
         }
     }
 }

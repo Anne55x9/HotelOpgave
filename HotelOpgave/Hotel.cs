@@ -29,5 +29,10 @@ namespace HotelOpgave
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Room> Room { get; set; }
+
+        public override string ToString()
+        {
+            return $"Hotelnummer er:{Hotel_No},\n Navnet er: {Name},\n Adressen er: {Address} ";
+        }
     }
 }
