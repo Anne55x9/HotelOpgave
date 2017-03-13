@@ -34,5 +34,10 @@ namespace HotelOpgave
         public virtual ICollection<Booking> Booking { get; set; }
 
         public virtual Hotel Hotel { get; set; }
+
+        public override string ToString()
+        {
+            return $"Rumnummeret er: {Room_No},\n Hotelnummeret er: {Hotel_No},\n Værelsestypen er: {Types},\n Prisen på værelset er: {Price}";
+        }
     }
 }

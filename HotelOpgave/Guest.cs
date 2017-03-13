@@ -32,7 +32,7 @@ namespace HotelOpgave
 
         public override string ToString()
         {
-            return $"Gæstens nummer er: {Guest_No}, Gæstens navn er: {Name}, Gæstens adresse er: {Address}";
+            return $"Gæstens nummer er: {Guest_No},\n Gæstens navn er: {Name},\n Gæstens adresse er: {Address}";
         }
     }
 }
