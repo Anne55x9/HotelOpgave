@@ -33,7 +33,7 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
-                Console.WriteLine("Opgave 3.2, List Hoteller med dets ruminformationer:");
+                Console.WriteLine("Opgave 3.1, List Hoteller med dets ruminformationer:");
 
 
                 var HotelVærelser =
@@ -56,6 +56,13 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
+                Console.WriteLine("Opgave 3.2, List alle reservationer hvert enkelt væresle har.");
+
+
+                var værelsesbookinger = 
+                    from r in db.Room
+                    join b in db.Booking
+                    on 
 
                 Console.ReadLine();
             }

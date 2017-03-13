@@ -27,5 +27,10 @@ namespace HotelOpgave
         public virtual Room Room { get; set; }
 
         public virtual Guest Guest { get; set; }
+
+        public override string ToString()
+        {
+            return $"Booking Id er: {Booking_id},\n Booking start: {Date_From},\n Booking slut: {Date_To}";
+        }
     }
 }
