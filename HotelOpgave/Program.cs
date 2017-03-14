@@ -125,6 +125,12 @@ namespace HotelOpgave
                 //db.Booking.Add(reserSøndag);
                 //db.SaveChanges();
 
+                ////Alternativt og bedst til csharp objekter:
+
+                //var reserMandag = new Booking() { Room_No = 3, Guest_No = 31, Hotel_No = 2, Date_From = new DateTime(2013, 03, 17), Date_To = new DateTime(2013, 03, 18) };
+                //db.Booking.Add(reserMandag);
+                //db.SaveChanges();
+
                 //var nyBookingliste =
                 //    from b in db.Booking
                 //    select new
@@ -143,18 +149,18 @@ namespace HotelOpgave
 
                 Console.WriteLine("Opgave 5.1, Opdater adressen for Arn guestno 30.");
 
-                var ArnAdresseÆndret =
-                    from g in db.Guest
-                    where g.Guest_No == 30
-                    select g;
-                Guest Arn = ArnAdresseÆndret.FirstOrDefault();
+                //var ArnAdresseÆndret =
+                //    from g in db.Guest
+                //    where g.Guest_No == 30
+                //    select g;
+                //Guest Arn = ArnAdresseÆndret.FirstOrDefault();
 
-                Arn.Address = "Elisagaardsvej 5, 4000 Roskilde";
+                //Arn.Address = "Elisagaardsvej 5, 4000 Roskilde";
 
-                foreach (var item in gæsteliste2)
-                {
-                    Console.WriteLine(item.ToString());
-                }
+                //foreach (var item in gæsteliste2)
+                //{
+                //    Console.WriteLine(item.ToString());
+                //}
 
                 Console.WriteLine("HotelOpgave 5.2, opdater navn for Prindsen til Roskilde First Hotel");
 
@@ -221,7 +227,6 @@ namespace HotelOpgave
 
                       };
 
-
                 foreach (var item in gæstno30slet)
                 {
                     Console.WriteLine(item.ToString());
@@ -241,14 +246,14 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
-                var gæstno30Slet =
-                    (from g in db.Guest
-                     where g.Guest_No == 30
-                     select g).FirstOrDefault();
+                //var gæstno30Slet =
+                //    (from g in db.Guest
+                //     where g.Guest_No == 30
+                //     select g).FirstOrDefault();
 
-                db.Guest.Remove(gæstno30Slet);
+                //db.Guest.Remove(gæstno30Slet);
 
-                db.SaveChanges();
+                //db.SaveChanges();
 
                 foreach (var item in gæsteliste2)
                 {
