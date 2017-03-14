@@ -144,6 +144,7 @@ namespace HotelOpgave
                 //foreach (var item in nyBookingliste)
                 //{
                 //    Console.WriteLine(item.ToString());
+
                 //}
 
 
