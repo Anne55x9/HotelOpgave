@@ -108,7 +108,154 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
+                Console.WriteLine("Opgave 4.2, Indsæt reservation fredag:");
 
+                //var reserFredag = new Booking() { Room_No = 4, Guest_No = 31, Hotel_No = 2, Date_From = DateTime.Parse("2013-03-17"), Date_To = DateTime.Parse("2013-03-18") };
+
+                //db.Booking.Add(reserFredag);
+                //db.SaveChanges();
+
+                Console.WriteLine("Opgave 4.3, Indsæt reservation lørdag:");
+
+                //var reserLørdag = new Booking() { Room_No = 4, Guest_No = 31, Hotel_No = 2, Date_From = DateTime.Parse("2013-03-18"), Date_To = DateTime.Parse("2013-03-19") };
+                //db.Booking.Add(reserLørdag);
+                //db.SaveChanges();
+
+                //var reserSøndag = new Booking() {Room_No = 3, Guest_No = 31, Hotel_No = 2, Date_From = DateTime.Parse("2013-03-19"), Date_To = DateTime.Parse("2013-03-20") };
+                //db.Booking.Add(reserSøndag);
+                //db.SaveChanges();
+
+                //var nyBookingliste =
+                //    from b in db.Booking
+                //    select new
+                //    {
+                //        b.Booking_id,
+                //        b.Date_From,
+                //        b.Date_To,
+                //        b.Guest
+                //    };
+
+                //foreach (var item in nyBookingliste)
+                //{
+                //    Console.WriteLine(item.ToString());
+                //}
+
+
+                Console.WriteLine("Opgave 5.1, Opdater adressen for Arn guestno 30.");
+
+                var ArnAdresseÆndret =
+                    from g in db.Guest
+                    where g.Guest_No == 30
+                    select g;
+                Guest Arn = ArnAdresseÆndret.FirstOrDefault();
+
+                Arn.Address = "Elisagaardsvej 5, 4000 Roskilde";
+
+                foreach (var item in gæsteliste2)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                Console.WriteLine("HotelOpgave 5.2, opdater navn for Prindsen til Roskilde First Hotel");
+
+                //var HotelPrindsenÆndret =
+                //    from h in db.Hotel
+                //    where h.Name.Contains("Prindsen")
+                //    select h;
+                //Hotel Prindsen = HotelPrindsenÆndret.FirstOrDefault();
+
+                //Prindsen.Name = "Roskilde First Hotel";
+
+                foreach (var item in hotelList)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                Console.WriteLine("Opgave 6.1, slet booking 55:");
+
+                // var b55slet = (from b in db.Booking
+                //                where b.Booking_id.Equals(55)
+                //                select b).FirstOrDefault();
+
+                //var b24slet = db.Booking.FirstOrDefault(x => x.Booking_id.Equals(24));
+
+                // db.Booking.Remove(b55slet);
+
+                //db.Booking.Remove(b24slet);
+
+                //db.SaveChanges();
+
+                var bookinglist =
+                    from b in db.Booking
+                    select b;
+
+                foreach (var item in bookinglist)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                Console.WriteLine("6.3 opgave, slet gæst no 26, Fejl da Booking har Gæstno som reference:");
+
+                //var sletGæst26 = db.Guest.FirstOrDefault(x => x.Guest_No.Equals(26));
+
+                //db.Guest.Remove(sletGæst26);
+
+                //db.SaveChanges();
+
+                //foreach (var item in gæsteliste2)
+                //{
+                //    Console.WriteLine(item.ToString());
+                //}
+
+                 Console.WriteLine("7.1 Opgave, slet gæst no 30 og booking id");
+
+                var gæstno30slet =
+                      from g in db.Guest
+                      join b in db.Booking
+                      on g.Guest_No equals b.Guest.Guest_No
+                      where g.Guest_No == 30
+                      select new
+                      {
+                          g.Guest_No,
+                          b.Booking_id
+
+                      };
+
+
+                foreach (var item in gæstno30slet)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                //var sletb83 =
+                //    (from b in db.Booking
+                //     where b.Booking_id.Equals(83)
+                //     select b).FirstOrDefault();
+
+                //db.Booking.Remove(sletb83);
+
+                db.SaveChanges();
+
+                foreach (var item in bookinglist)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                var gæstno30Slet =
+                    (from g in db.Guest
+                     where g.Guest_No == 30
+                     select g).FirstOrDefault();
+
+                db.Guest.Remove(gæstno30Slet);
+
+                db.SaveChanges();
+
+                foreach (var item in gæsteliste2)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+           
 
 
                 Console.ReadLine();
