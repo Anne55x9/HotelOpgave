@@ -233,6 +233,8 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
+
+
                 //var sletb83 =
                 //    (from b in db.Booking
                 //     where b.Booking_id.Equals(83)
@@ -261,7 +263,52 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
-           
+                Console.WriteLine("Opgave 8.1, alle bookinger på gæst:");
+
+
+                var bookinglist3 =
+                    from b in db.Booking
+                    group b by b.Guest_No
+                    into guestGroup
+                    orderby guestGroup.Key
+                    select new
+                    {
+                        guestNo = guestGroup.Key,
+                        //Hvad er det højeste rumnummer personen har booket. Ikke relastist bare syntax eksempel :)       
+                        countBookings = guestGroup.Count(),
+                        
+                     };
+
+                foreach (var item in bookinglist3)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+
+                Console.WriteLine("Opgave 8.1a, alle bookinger på gæst:");
+
+                var bookingTest =
+                    db.Booking.GroupBy(b => b.Guest_No)
+                    .OrderBy(guestGoup => guestGoup.Key)
+                    .Select(guestGroup => new
+                    {
+                        guestNo = guestGroup.Key,
+                        countBookings = guestGroup.Count(),
+                        bookingSum = guestGroup.Sum(x => x.Room.Price)
+
+                        //priceBookings = guestGroup.Sum()
+                    });
+
+
+                foreach (var item in bookingTest)
+                {
+                    Console.WriteLine(item.ToString());
+                }
+
+                Console.WriteLine("Opgave 8.2, gæstersnavn med:");
+
+             
+
 
 
                 Console.ReadLine();
