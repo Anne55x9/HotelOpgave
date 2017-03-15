@@ -265,7 +265,6 @@ namespace HotelOpgave
 
                 Console.WriteLine("Opgave 8.1, alle bookinger på gæst:");
 
-
                 var bookinglist3 =
                     from b in db.Booking
                     group b by b.Guest_No
@@ -284,10 +283,9 @@ namespace HotelOpgave
                     Console.WriteLine(item.ToString());
                 }
 
-
                 Console.WriteLine("Opgave 8.1a, alle bookinger på gæst:");
 
-                var bookingTest =
+                var bookingprisPergæst =
                     db.Booking.GroupBy(b => b.Guest_No)
                     .OrderBy(guestGoup => guestGoup.Key)
                     .Select(guestGroup => new
@@ -295,26 +293,27 @@ namespace HotelOpgave
                         guestNo = guestGroup.Key,
                         countBookings = guestGroup.Count(),
                         bookingSum = guestGroup.Sum(x => x.Room.Price)
-
-                        //priceBookings = guestGroup.Sum()
                     });
 
-
-                foreach (var item in bookingTest)
+                foreach (var item in bookingprisPergæst)
                 {
                     Console.WriteLine(item.ToString());
                 }
 
                 Console.WriteLine("Opgave 8.2, gæstersnavn med:");
 
-             
+                var glist = from bpg in bookingprisPergæst
+                            join g in db.Guest
+                            on bpg.guestNo equals(g.Guest_No)
+                            select new { navn = g.Name, bpg };
 
-
+                foreach (var item in glist)
+                {
+                    Console.WriteLine($"navn: {item.navn}, gæst id: {item.bpg.guestNo}, antal bookninger: {item.bpg.countBookings}, sum: {item.bpg.bookingSum}");
+                }
 
                 Console.ReadLine();
             }
-
-
 
         }
     }
